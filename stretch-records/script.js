@@ -35,19 +35,79 @@ function renderCards(list) {
     cardArea.append(buildCard(artist));
   }
 }
-// Show loading message
-const status = document.querySelector(".status");
-status.textContent = "Loading artists...";
+// Step 2: Wrapping artist loader in three handler methods
+// function loadArtists() {
+//   return fetch("artists.json").then((response) => response.json());
+// }
 
-// Loading data from artists JSON file (modified to add 2 sec delay)
-setTimeout(() => {
-  fetch("artists.json")
-    .then((response) => response.json())
-    .then((artists) => {
-      status.textContent = "";
-      renderCards(artists);
-    });
-}, 2000);
+// const status = document.querySelector(".status");
+// status.textContent = "Loading artists...";
+
+// loadArtists()
+//   .then((artists) => renderCards(artists))
+//   .catch((error) => console.log("Load failed", error.message))
+//   .finally(() => (status.textContent = ""));
+
+// Step 4: Rewrite artist loader with async function using await with try, catch, and finally
+function loadArtists() {
+  return fetch("artists.json").then((response) => response.json());
+}
+
+const status = document.querySelector(".status");
+
+async function showArtists() {
+  try {
+    status.textContent = "Loading artists...";
+    const artists = await loadArtists();
+    renderCards(artists);
+  } catch (error) {
+    status.textContent = "We could not load the artists";
+  } finally {
+    status.textContent = "";
+  }
+}
+
+showArtists();
+
+// With valid artists.json, the artist cards render normally.
+// With invalid artists.json, the cards do not render and the visitor sees
+// "We could not load the artists." The finally block runs in both cases.
+
+// Step 8: Handle empty artist data with custom error showing visitor-friendly message
+// class MissingArtistDataError extends Error {
+//   constructor(field) {
+//     super("Required data is missing " + field);
+//     this.name = "MissingArtistDataError";
+//   }
+// }
+
+// function loadArtists() {
+//   return fetch("empty-artists.json").then((response) => response.json());
+// }
+
+// const status = document.querySelector(".status");
+
+// async function showArtists() {
+//   try {
+//     status.textContent = "Loading artists...";
+//     const artists = await loadArtists();
+//     if (artists.length === 0) {
+//       throw new MissingArtistDataError("artist data");
+//     }
+//     renderCards(artists);
+//   } catch (error) {
+//     status.textContent =
+//       "No artists are currently available. Please try at a later time.";
+//   } finally {
+//   }
+// }
+
+// showArtists();
+
+// When the artist data es empty, the custom error is thrown and caught.
+// The page shows a visitor-friendly message instead of silently displaying
+// an empty roster. I chose this wording because it explains the problem
+// without exposing technical error details and tells the visitor to try at a later time.
 
 // Shuffle: pick a random artist and feature them.
 const shuffleButton = document.querySelector(".shuffle");
