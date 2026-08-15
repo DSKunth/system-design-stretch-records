@@ -64,7 +64,7 @@ npx json-server artists.json
 Start the label API in a second terminal:
 
 ```bash
-npx jso
+npx json-server label.json --port 3001
 ```
 
 Then open the application using the local development server.
