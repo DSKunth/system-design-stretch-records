@@ -1,34 +1,70 @@
-# Stretch Records: System Design Fundamentals starter
+# Stretch Records: System Design Fundamentals
 
-This repository is your workspace for all five lessons of the System Design
-Fundamentals course. It starts exactly where the JavaScript course's finale
-left off: the Stretch Records artist page, its five artists rendered from an
-array in `stretch-records/script.js`.
+A small music-artist web application built as part of the System Design Fundamentals learning block.
 
-## What is in here
+The project started with a simple JSON file and evolved into a client-server application using `fetch()`, `json-server`, HTTP requests, asynchronous JavaScript, error handling, and multiple API endpoints.
 
-- `stretch-records/`: the provided artist page. Serve it with Live Server.
-  Every site change the lessons ask for happens in this folder.
-- `lesson-01.js` to `lesson-04.js`: one file per lesson for your standalone
-  work, run with `node`. Lesson 2 carries two provided programs; read the
-  comments at the top of each file.
-- `lesson-05.md`: the written system audit for the final lesson.
-- `stretch-records/label.json`: the label's own information, provided for
-  Lesson 4. You will serve it with json-server on a second port.
+## What I Practiced
 
-## The workflow
+- Client-server architecture
+- HTTP requests, responses, and status codes
+- `fetch()` and `async`/`await`
+- Promises and `Promise.all()`
+- Error handling and custom errors
+- POST requests and data persistence
+- CORS and API contracts
+- Latency and caching
+- System layers and single points of failure
+- Basic system integration
 
-One branch and one reviewed pull request per lesson, with `main` always
-holding the merged state:
+## System
 
-1. Create a branch named `lesson-01` from `main`.
-2. Do the lesson's task: site changes in `stretch-records/`, standalone work
-   in the lesson file.
-3. Commit, push the branch, and open a pull request.
-4. Submit the pull request link, and merge after review.
-5. The next lesson branches from the updated `main`.
+```text
+Browser
+   │
+   ├── GET /artists ──► json-server :3000 ──► artists.json
+   │
+   └── GET /label ────► json-server :3001 ──► label.json
+```
 
-## Before Lesson 1
+The application uses Promise.all() to wait for both API responses before
+rendering the artist cards.
 
-Remove this clone's connection to the original repository, publish it to
-your own GitHub account, and add your reviewer, as described in the course.
+## Project Structure
+
+```text
+system-design-stretch/
+├── stretch-records/       # Main web application
+│   ├── images/            # Artist images
+│   ├── artists.json       # Artist data
+│   ├── empty-artists.json # Empty data for error-handling exercise
+│   ├── index.html         # Main page
+│   ├── label.json         # Label data
+│   ├── script.js          # Application logic
+│   └── styles.css         # Page styling
+├── lesson-01.js            # Lesson 1 exercises
+├── lesson-02.js            # Lesson 2 exercises
+├── lesson-03.js            # Lesson 3 exercises
+├── lesson-04.js            # Lesson 4 exercises
+├── lesson-05.md            # System audit
+└── README.md               # Project overview
+```
+
+The `stretch-records` folder contains the running application. The lesson
+files contain the standalone exercises and observations.
+
+## Run Locally
+
+Start the artist API:
+
+```bash
+npx json-server artists.json
+```
+
+Start the label API in a second terminal:
+
+```bash
+npx jso
+```
+
+Then open the application using the local development server.
