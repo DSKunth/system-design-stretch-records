@@ -1,38 +1,57 @@
-[
-  {
-    "name": "Pinkfong",
-    "genre": "Children's music",
-    "total": "11:31",
-    "photo": "images/pinkfong.jpeg"
-  },
-  {
-    "name": "Adriano Celentano",
-    "genre": "Italian pop",
-    "total": "20:52",
-    "photo": "images/adriano-celentano.jpg"
-  },
-  {
-    "name": "Asake",
-    "genre": "Afrobeats",
-    "total": "14:08",
-    "photo": "images/asake.jpg"
-  },
-  {
-    "name": "Miyagi and Andy Panda",
-    "genre": "Hip-hop",
-    "total": "16:21",
-    "photo": "images/miyagi-and-andy-panda.jpg"
-  },
-  {
-    "name": "Johnny Cash",
-    "genre": "Country",
-    "total": "15:40",
-    "photo": "images/johnny-cash.jpg"
-  },
-  {
-    "name": "Ejae",
-    "genre": "Korean Pop",
-    "total": "18:40",
-    "photo": "images/ejae.jpg"
-  }
-]
+{
+  "artists": [
+    {
+      "name": "Pinkfong",
+      "genre": "Children's music",
+      "total": "11:31",
+      "photo": "images/pinkfong.jpeg",
+      "id": "aJJxaZZMgUs"
+    },
+    {
+      "name": "Adriano Celentano",
+      "genre": "Italian pop",
+      "total": "20:52",
+      "photo": "images/adriano-celentano.jpg",
+      "id": "VoOfsVk6zms"
+    },
+    {
+      "name": "Asake",
+      "genre": "Afrobeats",
+      "total": "14:08",
+      "photo": "images/asake.jpg",
+      "id": "VngjNTHIrYk"
+    },
+    {
+      "name": "Miyagi and Andy Panda",
+      "genre": "Hip-hop",
+      "total": "16:21",
+      "photo": "images/miyagi-and-andy-panda.jpg",
+      "id": "JbUf9igwEMM"
+    },
+    {
+      "name": "Johnny Cash",
+      "genre": "Country",
+      "total": "15:40",
+      "photo": "images/johnny-cash.jpg",
+      "id": "csFWmIg3azQ"
+    },
+    {
+      "name": "Ejae",
+      "genre": "Korean Pop",
+      "total": "18:40",
+      "photo": "images/ejae.jpg",
+      "id": "A3NVc6LgRh8"
+    },
+    {
+      "name": "Eraserhheads",
+      "genre": "Alternative Pop",
+      "id": "NDoCqUoY-fI"
+    },
+    {
+      "name": "Rammstein",
+      "genre": "Industrial Metal",
+      "id": "s95QQHLC5aE"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
