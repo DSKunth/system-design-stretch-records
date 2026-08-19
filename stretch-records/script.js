@@ -35,11 +35,19 @@ function renderCards(list) {
     cardArea.append(buildCard(artist));
   }
 }
+// Show loading message
+const status = document.querySelector(".status");
+status.textContent = "Loading artists...";
 
-// Loading data from artists JSON file
-fetch("artists.json")
-  .then((response) => response.json())
-  .then((artists) => renderCards(artists));
+// Loading data from artists JSON file (modified to add 2 sec delay)
+setTimeout(() => {
+  fetch("artists.json")
+    .then((response) => response.json())
+    .then((artists) => {
+      status.textContent = "";
+      renderCards(artists);
+    });
+}, 2000);
 
 // Shuffle: pick a random artist and feature them.
 const shuffleButton = document.querySelector(".shuffle");
